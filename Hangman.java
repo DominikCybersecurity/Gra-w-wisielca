@@ -34,22 +34,22 @@ public class Hangman {
         guessedWord = new StringBuilder(repeat('_', selectedWord.length()));
         attemptsLeft = 6; // setting 6 attempts as default
 
-        System.out.println("Welcome to Hangman!");
-        System.out.println("Try to guess the word.");
+        System.out.println("Witaj w grze w wisielca!");
+        System.out.println("Sproboj zgadnac slowo.");
 
         while (attemptsLeft > 0 && guessedWord.toString().contains("_")) {
-            System.out.println("Guessed word so far: " + guessedWord);
-            System.out.println("Attempts left: " + attemptsLeft);
-            System.out.print("Enter a letter: ");
+            System.out.println("Do tej pory zgadles: " + guessedWord);
+            System.out.println("Pozostalo prob: " + attemptsLeft);
+            System.out.print("Wprowadz litere: ");
             String input = scanner.nextLine().toLowerCase();
             if (input.length() != 1 || !Character.isLetter(input.charAt(0))) {
-                System.out.println("Invalid input. Please enter a single letter.");
+                System.out.println("Niepoprawne dane, wprowadz jedna litere.");
                 continue;
             }
             char guess = input.charAt(0);
 
             if (guessedLetters.contains(guess)) {
-                System.out.println("You already guessed that letter.");
+                System.out.println("Juz zgadles te litere.");
             } else {
                 guessedLetters.add(guess);
                 if (selectedWord.contains(String.valueOf(guess))) {
@@ -65,9 +65,9 @@ public class Hangman {
         }
 
         if (guessedWord.toString().equals(selectedWord)) {
-            System.out.println("Congratulations! You guessed the word: " + selectedWord);
+            System.out.println("Swietnie, zgadles slowo!: " + selectedWord);
         } else {
-            System.out.println("Sorry, you ran out of attempts. The word was: " + selectedWord);
+            System.out.println("Niesetety, slowo to: " + selectedWord);
         }
         scanner.close();
     }
